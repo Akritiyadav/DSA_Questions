@@ -23,8 +23,8 @@ int houseRobberDP(vector<int>& arr) {
                 max(i - 2 >= 0 ? dp[i - 2] : 0, i - 3 >= 0 ? dp[i - 3] : 0);
         dp[i] = max(dp[i], dp[i - 1]);
     }
-    // return max(dp[n - 2], dp[n - 1]);
-    return dp[n - 1];
+    return max(dp[n - 2], dp[n - 1]);
+    // return dp[n - 1];
 }
 
 int main() {
