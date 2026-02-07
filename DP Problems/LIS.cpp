@@ -21,7 +21,7 @@ int solve(vector<int>& arr) {
                 end=mid-1;
             }
         }
-        a[idx]=arr[i];
+        a[idx]=arr[i]; 
     }
     return ans;
 }

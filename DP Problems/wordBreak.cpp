@@ -16,19 +16,18 @@ bool solve(string& str, set<string>& arr, int n) {
     return false;
 }
 
+/**
+ * akriti
+ */
 bool solveDP(string& str, set<string>& arr) {
     int n = str.size();
     bool dp[n + 1];
     fill_n(dp, n + 1, false);
     dp[0] = true;
     for (int i = 1; i <= n; i++) {
-        /**starting from zero cut all the possible string as second string and check second
-         * as well as dp[j] {which is basically first cut} exist 
-        **/
-        for (int j = 0; j <= i; j++) {
-            string second = str.substr(j, i - j); 
-            if (dp[i]) break; // dp[i] has already been found that means i length is possible, so no need to compute more
-            dp[i] = dp[j] and arr.count(second); // by taking second as last cut and checking dp[j] exist in some cuts
+        for (int j = 0; j < i; j++) {
+            string cut = str.substr(j, i - j);
+            dp[i] = dp[i] || (arr.count(cut) && dp[j]);
         }
     }
     return dp[n];
@@ -41,6 +40,5 @@ int main() {
     for (auto it : dictionary) {
         st.insert(it);
     }
-    st.insert("");
     cout << solveDP(s, st);
 }

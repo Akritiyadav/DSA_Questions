@@ -19,14 +19,14 @@ int subStringDP(string s, string t) {
     int n = s.size();
     int m = t.size();
     int dp[n + 1][m + 1];
-    fill_n(&dp[0][0], n * m, 0);
+    fill_n(&dp[0][0], (n+1) * (m+1), 0);
     int ans = 0;
-    for (int i = 0; i <= m; i++) {
-        dp[0][i] = 0;
-    }
-    for (int i = 0; i <= n; i++) {
-        dp[i][0] = 0;
-    }
+    // for (int i = 0; i <= m; i++) {
+    //     dp[0][i] = 0;
+    // }
+    // for (int i = 0; i <= n; i++) {
+    //     dp[i][0] = 0;
+    // }
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= m; j++) {
             if (s[i - 1] == t[j - 1]) {
@@ -39,6 +39,7 @@ int subStringDP(string s, string t) {
     }
     return ans;
 }
+
 int main() {
     string s = "gfgfor", t = "gfg";
     int n=s.size(),m=t.size();

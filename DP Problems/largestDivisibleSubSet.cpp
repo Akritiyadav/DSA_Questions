@@ -14,7 +14,7 @@ void largestDivisibleSubsetDP(vector<int>& arr) {
 
     for (int i = 1; i < n; i++) {
         for (int j = 0; j < i; j++) {
-            if (arr[i] % arr[j] == 0) {
+            if (arr[i] % arr[j] == 0 && dp[j].first + 1 > dp[i].first) {
                 dp[i] = {dp[j].first + 1, j};
             }
         }

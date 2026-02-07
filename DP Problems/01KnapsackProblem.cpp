@@ -51,8 +51,8 @@ int solveDP(int W, vector<int>& prof, vector<int>& wt) {
 }
 
 int main() {
-     vector<int> val = {1, 30}, wt = {1, 50};
-    int capacity = 100;
+     vector<int> val = {1,2,3}, wt = {4,5,1};
+    int capacity = 4;
     cout << solveDP(capacity, val, wt) << endl;
     return 0;
 }
