@@ -27,9 +27,10 @@ bool solveDP(string& s, string& p) {
     }
     return dp[n][m];
 }
+
 int main() {
     string s = "abb";
-    string p = "a.*";~
+    string p = "a.*";
     cout << solveDP(s, p);
     return 0;
 }

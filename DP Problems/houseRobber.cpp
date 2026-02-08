@@ -14,6 +14,23 @@ int solve(vector<int>& arr, int ind) {
     int b = solve(arr, ind - 1);
     return max(a, b);
 }
+
+
+// int solve(vector<int> arr) {
+//     int n = arr.size();
+//     if (n == 0) return 0;
+//     if (n == 1) return arr[0];
+//     int dp[n + 1];
+//     fill_n(&dp[0], n + 1, 0);
+//     dp[0] = 0;
+//     dp[1] = arr[0];
+//     for (int i = 2; i <= n; i++) {
+//         dp[i] = max(dp[i - 1], dp[i - 2] + arr[i - 1]);
+//     }
+//     return dp[n];
+// }
+
+
 int houseRobberDP(vector<int>& arr) {
     int n = arr.size();
     vector<int> dp(n);

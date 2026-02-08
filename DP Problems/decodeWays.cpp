@@ -25,5 +25,5 @@ int wordCountDP(string str) {
     return dp[n];
 }
 int main() {
-     cout << wordCountDP("20"); 
+     cout << wordCountDP("121"); 
 }

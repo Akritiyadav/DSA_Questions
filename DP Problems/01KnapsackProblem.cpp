@@ -16,12 +16,12 @@ int solveDP(int W, vector<int>& prof, vector<int>& wt) {
     int n = wt.size();
     int dp[n + 1][W + 1];
     fill_n(&dp[0][0], (W + 1) * (n + 1), 0);
-    for (int i = 0; i <= W; i++) {
-        dp[0][i] = 0;
-    }
-    for (int i = 0; i <= n; i++) {
-        dp[i][0] = 0;
-    }
+    // for (int i = 0; i <= W; i++) {
+    //     dp[0][i] = 0;
+    // }
+    // for (int i = 0; i <= n; i++) {
+    //     dp[i][0] = 0;
+    // }
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= W; j++) {
             int a = 0, b = 0;
@@ -51,8 +51,8 @@ int solveDP(int W, vector<int>& prof, vector<int>& wt) {
 }
 
 int main() {
-     vector<int> val = {1,2,3}, wt = {4,5,1};
-    int capacity = 4;
+     vector<int> val = {1,2,3}, wt = {4,5,6};
+    int capacity = 3;
     cout << solveDP(capacity, val, wt) << endl;
     return 0;
 }
