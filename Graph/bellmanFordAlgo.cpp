@@ -22,6 +22,9 @@ vector<ll> solve(vector<Triplet> edges, int v, int src) {
     return dist;
 }
 
+/**
+ * tc:v*E =v*v^2=V^3
+ */
 int main() {
     vector<Triplet> edges;
     edges.push_back({0, 1, 10});

@@ -1,40 +1,40 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int solve(int n, vector<vector<int>> ladders, vector<vector<int>> snakes) {
-    vector<int> l1(n + 1, -1);
-    for (int i = 0; i < ladders.size(); i++) {
-        l1[ladders[i][1]] = ladders[i][0];
-    }
-
-    vector<int> s1(n + 1, -1);
-    for (int i = 0; i < snakes.size(); i++) {
-        s1[snakes[i][0]] = snakes[i][1];
-    }
-
-    vector<int> dp(n + 1, INT_MAX);
-    dp[1] = 0;
-
-    for (int i = 2; i <= n; i++) {
-        if (s1[i] != -1) {
-            continue;
-        }
-        for (int k = 1; k <= 6; k++) {
-            if (i - k >= 1) {
-                dp[i] = min(dp[i], dp[i - k] + 1);
+vector<int> solve(vector<vector<int>>& graph) {
+    int v = graph.size();
+    int src = 0;
+    queue<int> q;
+    q.push(src);
+    vector<bool> visited(v, false);
+    vector<int> res;
+    visited[src] = true;
+    while (q.size()) {
+        auto front = q.front();
+        q.pop();
+        res.push_back(front);
+        for (auto it : graph[front]) {
+            if (!visited[it]) {
+                visited[it] = true;
+                q.push(it);
             }
         }
-
-        if (l1[i] != -1) {
-            dp[i] = min(dp[i], dp[l1[i]]);
-        }
     }
-    return dp[n];
+    return res;
 }
 
 int main() {
-    int n = 30;
-    vector<vector<int>> ladders = {{2, 21}, {4, 7}, {10, 25}, {19, 28}};
-    vector<vector<int>> snakes = {{26, 0}, {20, 8}, {16, 3}, {18, 6}};
-    cout << solve(n, ladders, snakes);
+     vector<vector<int>> graph(5);
+
+    graph[0] = {1, 2};
+    graph[1] = {0, 2};
+    graph[2] = {0, 1, 3, 4};
+    graph[3] = {2};
+    graph[4] = {2};
+     
+    // bfs1(0,graph);
+    vector<int> res = solve(graph);
+    for (int i : res) {
+        cout << i << " ";
+    }
 }
