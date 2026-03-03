@@ -18,6 +18,7 @@ int bfs(vector<vector<int>>& mat, vector<int>& src, vector<int>& dest) {
     queue<pair<pair<int, int>, int>> q;
 
     q.push({{srcx, srcy}, 0});
+    
     vis[srcx][srcy] = true;
 
     int X[] = {-1, 1, 0, 0};
