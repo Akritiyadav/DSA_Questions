@@ -26,6 +26,42 @@ float solve(int k, int r, int c) {
     }
     return min(q.front(), 1.f);
 }
+
+
+//dynamic programming
+
+double findWater(int k, int r, int c) {
+
+    // create DP table
+    vector<vector<double>> dp(r + 1, vector<double>(r + 1, 0.0));
+
+    // pour water at top
+    dp[0][0] = k;
+
+    // process each row
+    for (int i = 0; i < r; i++) {
+        for (int j = 0; j <= i; j++) {
+
+            // if overflow happens
+            if (dp[i][j] > 1.0) {
+
+                double extra = dp[i][j] - 1.0;
+
+                // split overflow
+                dp[i + 1][j] += extra / 2.0;
+                dp[i + 1][j + 1] += extra / 2.0;
+
+                // current glass can only hold 1
+                dp[i][j] = 1.0;
+            }
+        }
+    }
+
+    // return required glass
+    return min(1.0, dp[r][c]);
+}
+
+
 int main() {
     int k = 3, r = 2, c = 1;
     cout << solve(k, r, c);
